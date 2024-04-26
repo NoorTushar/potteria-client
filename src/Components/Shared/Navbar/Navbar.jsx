@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./Navbar.css";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const navItems = (
    <>
@@ -18,6 +19,8 @@ const Navbar = () => {
    const [theme, setTheme] = useState(
       localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
    );
+
+   const values = useContext(AuthContext);
 
    // update state on toggle
    const handleToggle = (e) => {
@@ -71,7 +74,7 @@ const Navbar = () => {
                to={"/"}
                className="font-Alegreya text-xl md:text-3xl font-light text-brownPrimary tracking-[1.2px]"
             >
-               Potteria
+               Potteria {values}
             </Link>
          </div>
          <div className="navbar-center hidden lg:flex">

@@ -23,7 +23,9 @@ const Login = () => {
    return (
       <div className="min-h-[calc(100vh-100px)] flex flex-col items-center justify-center">
          <div className="w-full mx-auto max-w-md p-8 space-y-3  ">
-            <h1 className="text-3xl font-bold text-center tracking-[4px] dark:text-blue-800">
+            <h1
+               className={`text-3xl font-bold text-center tracking-[4px] text-red-500 dark:text-blue-800 `}
+            >
                LOGIN
             </h1>
             {/* // React-Hook-Form: (3) */}
