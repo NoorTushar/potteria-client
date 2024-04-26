@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import Success from "../../../public/lottie.json";
+import Lottie from "lottie-react";
 
 const Login = () => {
    const { theme, loginUser, loginWithGoogle } = useContext(AuthContext);
@@ -28,9 +31,30 @@ const Login = () => {
          .then((data) => {
             console.log(data.user);
             reset();
+
+            Swal.fire({
+               title: "Success!",
+               text: "Logged in successfully!",
+               icon: "success",
+               confirmButtonText: "Ok",
+            });
          })
-         .catch((err) => {
-            console.log(err);
+         .catch((error) => {
+            console.log(error);
+            const errorMessage = error.message
+               .split("Firebase: Error (auth/")[1]
+               .split(")")[0]
+               .replace(/-/g, " ");
+
+            Swal.fire({
+               title: "Failure!",
+               text: `${errorMessage}`,
+               icon: "error",
+               width: 600,
+               color: "#A65F3F",
+               background: "",
+               confirmButtonText: "Ok",
+            });
          });
    };
 
@@ -39,15 +63,37 @@ const Login = () => {
       loginWithGoogle()
          .then((data) => {
             console.log(data.user);
+
+            Swal.fire({
+               title: "Success!",
+               text: "Logged in successfully!",
+               icon: "success",
+
+               confirmButtonText: "Ok",
+            });
          })
          .catch((error) => {
             console.log(error);
+            const errorMessage = error.message;
+
+            Swal.fire({
+               title: "Failure!",
+               text: `${errorMessage}`,
+               icon: "error",
+               width: 600,
+               color: "tomato",
+               background: "",
+               confirmButtonText: "Ok",
+            });
          });
    };
 
    return (
       <div className="min-h-[calc(100vh-100px)] flex flex-col items-center justify-center">
          <div className="w-full mx-auto max-w-md p-8 space-y-3  ">
+            <div className="size-20">
+               <Lottie loop={true} animationData={Success}></Lottie>
+            </div>
             <h1
                className={`text-3xl font-bold text-center tracking-[4px] ${
                   theme === "luxury" ? "text-blue-500" : "text-red-500"
