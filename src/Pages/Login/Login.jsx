@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-   const { theme, loginWithGoogle } = useContext(AuthContext);
+   const { theme, loginUser, loginWithGoogle } = useContext(AuthContext);
 
    // React-Hook-Form: (2a)
    const {
@@ -22,6 +22,16 @@ const Login = () => {
       const password = getValues("password");
 
       console.log(email, password);
+
+      // login with firebaser email and pass
+      loginUser(email, password)
+         .then((data) => {
+            console.log(data.user);
+            reset();
+         })
+         .catch((err) => {
+            console.log(err);
+         });
    };
 
    // login with google using firebase

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {
    GoogleAuthProvider,
    createUserWithEmailAndPassword,
+   signInWithEmailAndPassword,
    signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
@@ -21,12 +22,23 @@ const AuthProvider = ({ children }) => {
       return createUserWithEmailAndPassword(auth, email, password);
    };
 
+   // login using firebase email and password
+   const loginUser = (email, password) => {
+      return signInWithEmailAndPassword(auth, email, password);
+   };
+
    // login with Google using firebase
    const loginWithGoogle = () => {
       return signInWithPopup(auth, googleProvider);
    };
 
-   const allValues = { theme, setTheme, createUser, loginWithGoogle };
+   const allValues = {
+      theme,
+      setTheme,
+      createUser,
+      loginUser,
+      loginWithGoogle,
+   };
    return (
       <AuthContext.Provider value={allValues}>{children}</AuthContext.Provider>
    );
