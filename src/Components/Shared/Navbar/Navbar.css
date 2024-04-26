@@ -1,0 +1,14 @@
+.my-nav-item > a.active {
+   background-color: transparent !important;
+   color: #a65f3f !important;
+   position: relative;
+}
+
+.my-nav-item > a.active::after {
+   content: "";
+   position: absolute;
+   bottom: 0px;
+   width: 100%;
+   height: 2px;
+   background-color: #a65f3f;
+}
