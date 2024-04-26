@@ -4,6 +4,7 @@ import "./Navbar.css";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import LogoutButton from "../LogoutButton/LogoutButton";
 import LoginButton from "../LoginButton/LoginButton";
+import UpdateProfileButton from "../UpdateProfileButton/UpdateProfileButton";
 
 const navItems = (
    <>
@@ -13,14 +14,11 @@ const navItems = (
       <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
          <NavLink to={"/items"}>Items</NavLink>
       </li>
-      <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
-         <NavLink to={"/addItem"}>Add Item</NavLink>
-      </li>
    </>
 );
 
 const Navbar = () => {
-   const { theme, setTheme } = useContext(AuthContext);
+   const { theme, setTheme, user } = useContext(AuthContext);
 
    // update state on toggle
    const handleToggle = (e) => {
@@ -68,6 +66,13 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 uppercase text-[10px] md:text-[12px]"
                >
                   {navItems}
+
+                  {/* show only when user is available */}
+                  {user && (
+                     <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
+                        <NavLink to={"/addItem"}>Add Item</NavLink>
+                     </li>
+                  )}
                </ul>
             </div>
             <Link
@@ -80,6 +85,12 @@ const Navbar = () => {
          <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1 uppercase text-[14px] space-x-2">
                {navItems}
+               {/* show only when user is available */}
+               {user && (
+                  <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
+                     <NavLink to={"/addItem"}>Add Item</NavLink>
+                  </li>
+               )}
             </ul>
          </div>
          <div className="navbar-end flex items-center gap-2">
@@ -125,9 +136,35 @@ const Navbar = () => {
                </label>
             </button>
 
-            <LoginButton></LoginButton>
-
-            <LogoutButton></LogoutButton>
+            {user ? (
+               <div className="dropdown dropdown-bottom dropdown-end dropdown-hover">
+                  <div>
+                     <img
+                        tabIndex={0}
+                        role="button"
+                        className="size-12 rounded-full m-1"
+                        src={user.photoURL}
+                        alt=""
+                     />
+                  </div>
+                  <ul
+                     tabIndex={0}
+                     className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 space-y-2"
+                  >
+                     <li className="text-center text-brownPrimary text-base">
+                        {`Welcome ${user.displayName} !`}
+                     </li>
+                     <li>
+                        <UpdateProfileButton></UpdateProfileButton>
+                     </li>
+                     <li>
+                        <LogoutButton></LogoutButton>
+                     </li>
+                  </ul>
+               </div>
+            ) : (
+               <LoginButton></LoginButton>
+            )}
          </div>
       </div>
    );

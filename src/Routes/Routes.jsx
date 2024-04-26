@@ -8,6 +8,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import AddItem from "../Pages/AddItem/AddItem";
+import UpdateProfilePage from "../Pages/UpdateProfilePage/UpdateProfilePage";
 
 export const router = createBrowserRouter([
    {
@@ -36,6 +37,14 @@ export const router = createBrowserRouter([
             element: (
                <PrivateRoute>
                   <AddItem></AddItem>
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "/updateProfile",
+            element: (
+               <PrivateRoute>
+                  <UpdateProfilePage></UpdateProfilePage>
                </PrivateRoute>
             ),
          },
