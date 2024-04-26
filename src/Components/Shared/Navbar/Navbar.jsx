@@ -6,6 +6,21 @@ import LogoutButton from "../LogoutButton/LogoutButton";
 import LoginButton from "../LoginButton/LoginButton";
 import UpdateProfileButton from "../UpdateProfileButton/UpdateProfileButton";
 
+// Function to check if a URL is valid
+function isValidURL(url) {
+   if (!url) return false; // If URL is empty, consider it invalid
+   const pattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+         "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+         "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+         "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+         "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+         "(\\#[-a-z\\d_]*)?$",
+      "i"
+   ); // fragment locator
+   return !!pattern.test(url);
+}
+
 const navItems = (
    <>
       <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
@@ -143,7 +158,11 @@ const Navbar = () => {
                         tabIndex={0}
                         role="button"
                         className="size-12 rounded-full m-1"
-                        src={user.photoURL}
+                        src={
+                           isValidURL(user?.photoURL)
+                              ? user?.photoURL
+                              : "https://i.ibb.co/JztHRpy/default-profile-pic.png"
+                        }
                         alt=""
                      />
                   </div>
