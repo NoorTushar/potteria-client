@@ -10,6 +10,9 @@ export default {
          textColor: {
             brownPrimary: "#A65F3F",
          },
+         backgroundColor: {
+            brownPrimary: "#A65F3F",
+         },
       },
    },
    plugins: [require("daisyui")],

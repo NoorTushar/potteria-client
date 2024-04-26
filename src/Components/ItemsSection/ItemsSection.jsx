@@ -37,9 +37,11 @@ const ItemsSection = () => {
       <div>
          <h3>Items: {allItems.length}</h3>
 
-         {allItems.slice(0, 6).map((item) => {
-            return <ItemCard key={item._id}></ItemCard>;
-         })}
+         <div className="grid md:grid-cols-2 gap-6">
+            {allItems.slice(0, 6).map((item) => {
+               return <ItemCard item={item} key={item._id}></ItemCard>;
+            })}
+         </div>
       </div>
    );
 };
