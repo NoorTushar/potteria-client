@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { IoMdEyeOff, IoMdEye } from "react-icons/io";
+import Swal from "sweetalert2";
 
 const Register = () => {
    const { theme, createUser, updateUser, setLoading } =
@@ -44,6 +45,13 @@ const Register = () => {
                // redirecting to page, it will keep showing the loader
                setLoading(false);
 
+               Swal.fire({
+                  title: "Success!",
+                  text: "Registration Successful!",
+                  icon: "success",
+
+                  confirmButtonText: "Ok",
+               });
                // navigate to private route or homepage
                navigate(location?.state || "/");
             });
