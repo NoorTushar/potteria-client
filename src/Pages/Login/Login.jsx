@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-   const { theme } = useContext(AuthContext);
+   const { theme, loginWithGoogle } = useContext(AuthContext);
 
    // React-Hook-Form: (2a)
    const {
@@ -22,6 +22,17 @@ const Login = () => {
       const password = getValues("password");
 
       console.log(email, password);
+   };
+
+   // login with google using firebase
+   const handleLoginWithGoogle = () => {
+      loginWithGoogle()
+         .then((data) => {
+            console.log(data.user);
+         })
+         .catch((error) => {
+            console.log(error);
+         });
    };
 
    return (
@@ -111,6 +122,7 @@ const Login = () => {
             <div className="flex justify-center space-x-4">
                {/* google sign in */}
                <button
+                  onClick={handleLoginWithGoogle}
                   aria-label="Log in with Google"
                   className="p-3 rounded-sm"
                >
