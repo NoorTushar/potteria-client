@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import "./Navbar.css";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import LogoutButton from "../LogoutButton/LogoutButton";
@@ -12,6 +12,9 @@ const navItems = (
       </li>
       <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
          <NavLink to={"/items"}>Items</NavLink>
+      </li>
+      <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
+         <NavLink to={"/addItem"}>Add Item</NavLink>
       </li>
    </>
 );

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 // React-Hook-Form: (1)
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
@@ -9,6 +9,19 @@ import Lottie from "lottie-react";
 
 const Login = () => {
    const { theme, loginUser, loginWithGoogle } = useContext(AuthContext);
+
+   // after login correct redirection (3)
+   // first we will get the location of the current page
+   const location = useLocation();
+   // in this location now we will have a property named
+   // state, which will have our pathname or will have NULL value
+
+   // after login correct redirection (4)
+   const navigate = useNavigate();
+
+   // after login correct redirection (1)
+   // we want to send this path to the registration state props
+   const locationState = location.state;
 
    // React-Hook-Form: (2a)
    const {
@@ -38,6 +51,9 @@ const Login = () => {
                icon: "success",
                confirmButtonText: "Ok",
             });
+
+            // after login correct redirection (5)
+            navigate(location?.state || "/");
          })
          .catch((error) => {
             console.log(error);
@@ -206,7 +222,12 @@ const Login = () => {
             </div>
             <p className="text-xs text-center sm:px-6  text-gray-400">
                Don't have an account?
-               <Link to={"/register"} className="underline text-gray-100 ">
+               {/* // after registration correct redirection - (2) */}
+               <Link
+                  state={locationState}
+                  to={"/register"}
+                  className="underline text-gray-100 "
+               >
                   Sign up
                </Link>
             </p>

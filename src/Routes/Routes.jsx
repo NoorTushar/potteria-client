@@ -6,6 +6,8 @@ import Home from "../Pages/Home/Home";
 import Items from "../Pages/Items/Items";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import AddItem from "../Pages/AddItem/AddItem";
 
 export const router = createBrowserRouter([
    {
@@ -28,6 +30,14 @@ export const router = createBrowserRouter([
          {
             path: "/register",
             element: <Register></Register>,
+         },
+         {
+            path: "/addItem",
+            element: (
+               <PrivateRoute>
+                  <AddItem></AddItem>
+               </PrivateRoute>
+            ),
          },
       ],
    },

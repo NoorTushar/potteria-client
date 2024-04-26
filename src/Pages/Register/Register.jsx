@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // React-Hook-Form: (1)
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
@@ -6,6 +6,13 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
    const { theme, createUser } = useContext(AuthContext);
+
+   // after registration correct redirection - (3)
+   const location = useLocation();
+   console.log(location);
+
+   // after registration correct redirection - (4)
+   const navigate = useNavigate();
 
    // React-Hook-Form: (2a)
    const {
@@ -27,6 +34,8 @@ const Register = () => {
          .then((data) => {
             console.log(data.user);
             reset();
+            // after registration correct redirection - (5)
+            navigate(location?.state || "/");
          })
          .catch((err) => console.log(err));
    };
