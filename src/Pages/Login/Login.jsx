@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 // React-Hook-Form: (1)
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
+   const { theme } = useContext(AuthContext);
+
    // React-Hook-Form: (2a)
    const {
       register,
@@ -24,7 +28,9 @@ const Login = () => {
       <div className="min-h-[calc(100vh-100px)] flex flex-col items-center justify-center">
          <div className="w-full mx-auto max-w-md p-8 space-y-3  ">
             <h1
-               className={`text-3xl font-bold text-center tracking-[4px] text-red-500 dark:text-blue-800 `}
+               className={`text-3xl font-bold text-center tracking-[4px] ${
+                  theme === "luxury" ? "text-blue-500" : "text-red-500"
+               }`}
             >
                LOGIN
             </h1>

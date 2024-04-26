@@ -15,12 +15,7 @@ const navItems = (
 );
 
 const Navbar = () => {
-   // use theme from local storage if available or set light theme
-   const [theme, setTheme] = useState(
-      localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-   );
-
-   const values = useContext(AuthContext);
+   const { theme, setTheme } = useContext(AuthContext);
 
    // update state on toggle
    const handleToggle = (e) => {
@@ -74,7 +69,7 @@ const Navbar = () => {
                to={"/"}
                className="font-Alegreya text-xl md:text-3xl font-light text-brownPrimary tracking-[1.2px]"
             >
-               Potteria {values}
+               Potteria
             </Link>
          </div>
          <div className="navbar-center hidden lg:flex">
