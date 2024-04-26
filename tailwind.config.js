@@ -7,7 +7,13 @@ export default {
             Lato: `"Lato", sans-serif;`,
             Alegreya: `"Alegreya", serif`,
          },
+         textColor: {
+            brownPrimary: "#A65F3F",
+         },
       },
    },
    plugins: [require("daisyui")],
+   daisyui: {
+      themes: ["light", "coffee", "luxury"],
+   },
 };
