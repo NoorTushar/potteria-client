@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 import PropTypes from "prop-types";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 
@@ -9,7 +11,12 @@ const AuthProvider = ({ children }) => {
       localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
    );
 
-   const allValues = { theme, setTheme };
+   // create firebase user
+   const createUser = (email, password) => {
+      return createUserWithEmailAndPassword(auth, email, password);
+   };
+
+   const allValues = { theme, setTheme, createUser };
    return (
       <AuthContext.Provider value={allValues}>{children}</AuthContext.Provider>
    );
