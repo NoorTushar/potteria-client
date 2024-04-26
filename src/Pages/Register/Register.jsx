@@ -23,7 +23,6 @@ const Register = () => {
       register,
       handleSubmit,
       getValues,
-      reset,
       formState: { errors },
    } = useForm();
 

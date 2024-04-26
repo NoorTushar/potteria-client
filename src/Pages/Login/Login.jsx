@@ -1,13 +1,18 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // React-Hook-Form: (1)
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import Success from "../../../public/lottie.json";
 import Lottie from "lottie-react";
+import { IoMdEyeOff, IoMdEye } from "react-icons/io";
 
 const Login = () => {
+   // toggle show/ hide password - (1)
+   const [showPassword, setShowPassword] = useState(false);
+
+   // importing values from AutHContext provider
    const { theme, loginUser, loginWithGoogle } = useContext(AuthContext);
 
    // after login correct redirection (3)
@@ -155,20 +160,36 @@ const Login = () => {
                   <label htmlFor="password" className="block ">
                      Password
                   </label>
-                  <input
-                     // React-Hook-Form: (6)
-                     {...register("password", {
-                        required: {
-                           value: true,
-                           message: "Must provide a password.",
-                        },
-                     })}
-                     type="password"
-                     name="password"
-                     id="password"
-                     placeholder="Password"
-                     className="w-full p-3 border-b border-gray-100  outline-none duration-300 focus:border-[#A65F3F] "
-                  />
+                  <div className="relative">
+                     <input
+                        // React-Hook-Form: (6)
+                        {...register("password", {
+                           required: {
+                              value: true,
+                              message: "Must provide a password.",
+                           },
+                        })}
+                        // toggle show/ hide password - (3)
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                        className="w-full p-3 border-b border-gray-100  outline-none duration-300 focus:border-[#A65F3F] "
+                     />
+                     {/*  // toggle show/ hide password - (2) */}
+                     {showPassword ? (
+                        <IoMdEye
+                           onClick={() => setShowPassword(false)}
+                           className="absolute text-lg right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                        />
+                     ) : (
+                        <IoMdEyeOff
+                           onClick={() => setShowPassword(true)}
+                           className="absolute text-lg right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                        />
+                     )}
+                  </div>
+
                   {/* // React-Hook-Form: (7) */}
                   {errors?.password && (
                      <span className="text-red-500 block mt-1 mb-2 font-didact">
