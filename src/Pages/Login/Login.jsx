@@ -1,4 +1,4 @@
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // React-Hook-Form: (1)
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
@@ -39,7 +39,7 @@ const Login = () => {
 
       console.log(email, password);
 
-      // login with firebaser email and pass
+      // login with firebase email and pass
       loginUser(email, password)
          .then((data) => {
             console.log(data.user);
@@ -221,7 +221,7 @@ const Login = () => {
                </button>
             </div>
             <p className="text-xs text-center sm:px-6  text-gray-400">
-               Don't have an account?
+               Do not have an account?
                {/* // after registration correct redirection - (2) */}
                <Link
                   state={locationState}

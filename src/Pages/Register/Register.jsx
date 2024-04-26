@@ -5,11 +5,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
-   const { theme, createUser } = useContext(AuthContext);
+   const { theme, createUser, updateUser, setLoading } =
+      useContext(AuthContext);
 
    // after registration correct redirection - (3)
    const location = useLocation();
-   console.log(location);
 
    // after registration correct redirection - (4)
    const navigate = useNavigate();
@@ -25,19 +25,28 @@ const Register = () => {
 
    // React-Hook-Form: (2b)
    const onSubmit = () => {
+      const userName = getValues("userName");
       const email = getValues("email");
       const password = getValues("password");
+      const photoURL = getValues("photoURL");
 
-      console.log(email, password);
+      console.log(userName, email, password, photoURL);
 
       createUser(email, password)
-         .then((data) => {
-            console.log(data.user);
-            reset();
-            // after registration correct redirection - (5)
-            navigate(location?.state || "/");
+         .then(() => {
+            updateUser(userName, photoURL).then(() => {
+               setLoading(false);
+               navigate(location?.state || "/");
+            });
          })
-         .catch((err) => console.log(err));
+         .catch((error) => {
+            let errorMessage = error.message
+               .split("Firebase: Error (auth/")[1]
+               .split(")")[0]
+               .replace(/-/g, " ");
+
+            console.log(errorMessage);
+         });
    };
 
    return (
@@ -52,6 +61,32 @@ const Register = () => {
             </h1>
             {/* // React-Hook-Form: (3) */}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+               {/* name field */}
+               <div className="space-y-1 text-sm">
+                  <label htmlFor="userName" className="block ">
+                     Name
+                  </label>
+                  <input
+                     // React-Hook-Form: (9)
+                     {...register("userName", {
+                        required: {
+                           value: true,
+                           message: "Must provide a username.",
+                        },
+                     })}
+                     type="text"
+                     name="userName"
+                     placeholder="User name"
+                     className="w-full p-3 border-b border-gray-100  outline-none duration-300 focus:border-[#A65F3F] "
+                  />
+                  {/* // React-Hook-Form: (10) */}
+                  {errors?.userName && (
+                     <span className="text-red-500 block mt-1 mb-2 font-didact">
+                        {errors.userName.message}
+                     </span>
+                  )}
+               </div>
+
                {/* email field */}
                <div className="space-y-1 text-sm">
                   <label htmlFor="email" className="block ">
@@ -115,6 +150,26 @@ const Register = () => {
                   {errors?.password && (
                      <span className="text-red-500 block mt-1 mb-2 font-didact">
                         {errors.password.message}
+                     </span>
+                  )}
+               </div>
+
+               {/* PhotoURL Field */}
+               <div className="mt-4">
+                  <input
+                     {...register("photoURL", {
+                        required: {
+                           value: true,
+                           message: "Must provide a photo URL.",
+                        },
+                     })}
+                     type="text"
+                     placeholder="Photo URL"
+                     className="w-full p-3 border-b border-gray-100  outline-none duration-300 focus:border-[#A65F3F] "
+                  />
+                  {errors?.photoURL && (
+                     <span className="text-red-500 block mt-1 mb-2 font-didact">
+                        {errors.photoURL.message}
                      </span>
                   )}
                </div>
