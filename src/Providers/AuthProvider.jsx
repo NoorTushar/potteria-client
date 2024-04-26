@@ -5,6 +5,7 @@ import {
    createUserWithEmailAndPassword,
    signInWithEmailAndPassword,
    signInWithPopup,
+   signOut,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 
@@ -32,12 +33,18 @@ const AuthProvider = ({ children }) => {
       return signInWithPopup(auth, googleProvider);
    };
 
+   // logout
+   const logoutUser = () => {
+      return signOut(auth);
+   };
+
    const allValues = {
       theme,
       setTheme,
       createUser,
       loginUser,
       loginWithGoogle,
+      logoutUser,
    };
    return (
       <AuthContext.Provider value={allValues}>{children}</AuthContext.Provider>
