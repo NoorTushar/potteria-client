@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-   apiKey: "AIzaSyC5gHVUUyPcARhajC0dUkNaliOPquvzlo0",
-   authDomain: "potteria-auth.firebaseapp.com",
-   projectId: "potteria-auth",
-   storageBucket: "potteria-auth.appspot.com",
-   messagingSenderId: "513402321696",
-   appId: "1:513402321696:web:49f9838d7dd4cc859bf545",
+   apiKey: import.meta.env.VITE_APIKEY,
+   authDomain: import.meta.env.VITE_AUTHDOMAIN,
+   projectId: import.meta.env.VITE_PROJECTID,
+   storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+   messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+   appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
