@@ -26,8 +26,12 @@ export const router = createBrowserRouter([
             element: <Items></Items>,
          },
          {
-            path: "/items/:id",
-            element: <SingleItemPage></SingleItemPage>,
+            path: "/itemDetails/:id",
+            element: (
+               <PrivateRoute>
+                  <SingleItemPage></SingleItemPage>
+               </PrivateRoute>
+            ),
          },
          {
             path: "/login",
