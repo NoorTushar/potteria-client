@@ -9,6 +9,7 @@ import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import AddItem from "../Pages/AddItem/AddItem";
 import UpdateProfilePage from "../Pages/UpdateProfilePage/UpdateProfilePage";
+import SingleItemPage from "../Pages/SingleItemPage/SingleItemPage";
 
 export const router = createBrowserRouter([
    {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
          {
             path: "/items",
             element: <Items></Items>,
+         },
+         {
+            path: "/items/:id",
+            element: <SingleItemPage></SingleItemPage>,
          },
          {
             path: "/login",

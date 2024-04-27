@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const ItemCard = ({ item }) => {
-   const { image, item_name, price, subcategory_Name } = item;
+   const { _id, image, item_name, price, subcategory_Name } = item;
    return (
       <div className="py-2">
          <div>
@@ -19,7 +19,10 @@ const ItemCard = ({ item }) => {
          </div>
 
          <div className="mt-3 text-center">
-            <Link className="relative inline-flex items-center justify-start px-5 py-2 overflow-hidden font-medium transition-all bg-brownPrimary  hover:bg-white group border-2 border-[#a65f3f] text-[13px] tracking-[1.2px]">
+            <Link
+               to={`/items/${_id}`}
+               className="relative inline-flex items-center justify-start px-5 py-2 overflow-hidden font-medium transition-all bg-brownPrimary  hover:bg-white group border-2 border-[#a65f3f] text-[13px] tracking-[1.2px]"
+            >
                <span className="w-48 h-48 rounded rotate-[-40deg] bg-white  absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
                <span className="relative w-full text-left text-white transition-colors duration-500 ease-in-out group-hover:text-brownPrimary">
                   VIEW DETAILS

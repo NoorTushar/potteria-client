@@ -7,8 +7,6 @@ const ItemsSection = () => {
    const [itemLoading, setItemLoading] = useState(true);
    const [allItems, setAllItems] = useState([]);
 
-   console.log(allItems);
-
    // using fetch method to get all items
    // useEffect(() => {
    //    fetch("http://localhost:3000/items")
@@ -19,7 +17,7 @@ const ItemsSection = () => {
    //       });
    // }, []);
 
-   // using axios to get all items
+   // using axios (1) to get all items
    useEffect(() => {
       axios
          .get("http://localhost:3000/items")
