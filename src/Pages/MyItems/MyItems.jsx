@@ -1,8 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import MyItemCard from "../../Components/MyItemCard/MyItemCard";
+
+export const ItemProvider = createContext(null);
 
 const MyItems = () => {
    const [loadedItems, setLoadedItems] = useState([]);
@@ -19,7 +21,7 @@ const MyItems = () => {
             setLoadedItems(data);
          })
          .catch((err) => console.log(err));
-   }, []);
+   }, [toggle]);
 
    console.log(loadedItems);
 
@@ -36,17 +38,20 @@ const MyItems = () => {
       return <Navigate to={"/"} />;
    }
 
+   const itemContextValues = { toggle, setToggle };
    return (
-      <div className="max-w-[1170px] mx-auto w-[90%] md:w-[82%]">
-         <h3 className="uppercase">Items of {emailId}. Total items:</h3>
+      <ItemProvider.Provider value={itemContextValues}>
+         <div className="max-w-[1170px] mx-auto w-[90%] md:w-[82%]">
+            <h3 className="uppercase">Items of {emailId}. Total items:</h3>
 
-         {/* item gallery */}
-         <div className="grid md:grid-cols-2 gap-6">
-            {loadedItems.map((item) => {
-               return <MyItemCard item={item} key={item._id}></MyItemCard>;
-            })}
+            {/* item gallery */}
+            <div className="grid md:grid-cols-2 gap-6">
+               {loadedItems.map((item) => {
+                  return <MyItemCard item={item} key={item._id}></MyItemCard>;
+               })}
+            </div>
          </div>
-      </div>
+      </ItemProvider.Provider>
    );
 };
 
