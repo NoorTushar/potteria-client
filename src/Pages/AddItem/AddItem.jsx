@@ -1,6 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 import Swal from "sweetalert2";
@@ -13,7 +11,6 @@ const AddItem = () => {
    const {
       register,
       handleSubmit,
-      getValues,
       reset,
       formState: { errors },
    } = useForm({
