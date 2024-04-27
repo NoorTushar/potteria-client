@@ -11,6 +11,7 @@ import AddItem from "../Pages/AddItem/AddItem";
 import UpdateProfilePage from "../Pages/UpdateProfilePage/UpdateProfilePage";
 import SingleItemPage from "../Pages/SingleItemPage/SingleItemPage";
 import MyItems from "../Pages/MyItems/MyItems";
+import UpdateItemPage from "../Pages/UpdateItemPage/UpdateItemPage";
 
 export const router = createBrowserRouter([
    {
@@ -63,6 +64,14 @@ export const router = createBrowserRouter([
             element: (
                <PrivateRoute>
                   <UpdateProfilePage></UpdateProfilePage>
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "/updateItem/:id",
+            element: (
+               <PrivateRoute>
+                  <UpdateItemPage></UpdateItemPage>
                </PrivateRoute>
             ),
          },
