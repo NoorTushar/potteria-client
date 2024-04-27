@@ -22,6 +22,10 @@ const AddItem = () => {
    });
 
    const onSubmit = (data) => {
+      // Convert price from string to number
+      data.price = parseFloat(data.price);
+      // Convert rating from string to number
+      data.rating = parseFloat(data.rating);
       const item = data;
       console.log(item);
 
@@ -116,7 +120,7 @@ const AddItem = () => {
                      <label htmlFor="subcategory_Name" className="block ">
                         Subcategory Name
                      </label>
-                     <input
+                     <select
                         {...register("subcategory_Name", {
                            required: {
                               value: true,
@@ -126,7 +130,21 @@ const AddItem = () => {
                         type="text"
                         placeholder="Subcategory Name"
                         className="w-full p-3 border-b border-b-gray-300  outline-none duration-300 focus:border-[#A65F3F] "
-                     />
+                     >
+                        <option value=""></option>
+                        <option value="Clay-made pottery">
+                           Clay-made pottery
+                        </option>
+                        <option value="Stoneware">Stoneware</option>
+                        <option value="Porcelain">Porcelain</option>
+                        <option value="Terra Cotta">Terra Cotta</option>
+                        <option value="Ceramics & Architectural">
+                           Ceramics & Architectural
+                        </option>
+                        <option value="Home decor pottery">
+                           Home decor pottery
+                        </option>
+                     </select>
                      {errors?.subcategory_Name && (
                         <span className="text-red-500 block mt-1 mb-2 font-didact">
                            {errors.subcategory_Name.message}
@@ -162,7 +180,7 @@ const AddItem = () => {
                      <label htmlFor="rating" className="block ">
                         Rating
                      </label>
-                     <input
+                     <select
                         {...register("rating", {
                            required: {
                               value: true,
@@ -172,7 +190,19 @@ const AddItem = () => {
                         type="text"
                         placeholder="Rating"
                         className="w-full p-3 border-b border-b-gray-300  outline-none duration-300 focus:border-[#A65F3F] "
-                     />
+                     >
+                        <option value=""></option>
+                        <option value="5">5</option>
+                        <option value="4.5">4.5</option>
+                        <option value="4">4</option>
+                        <option value="3.5">3.5</option>
+                        <option value="3">3</option>
+                        <option value="2.5">2.5</option>
+                        <option value="2">2</option>
+                        <option value="1.5">1.5</option>
+                        <option value="1">1</option>
+                        <option value="0.5">0.5</option>
+                     </select>
                      {errors?.rating && (
                         <span className="text-red-500 block mt-1 mb-2 font-didact">
                            {errors.rating.message}
@@ -185,7 +215,7 @@ const AddItem = () => {
                      <label htmlFor="customization" className="block ">
                         Customization
                      </label>
-                     <input
+                     <select
                         {...register("customization", {
                            required: {
                               value: true,
@@ -195,7 +225,11 @@ const AddItem = () => {
                         type="text"
                         placeholder="Customization"
                         className="w-full p-3 border-b border-b-gray-300  outline-none duration-300 focus:border-[#A65F3F] "
-                     />
+                     >
+                        <option value=""></option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                     </select>
                      {errors?.customization && (
                         <span className="text-red-500 block mt-1 mb-2 font-didact">
                            {errors.customization.message}
@@ -231,7 +265,7 @@ const AddItem = () => {
                      <label htmlFor="stock_status" className="block ">
                         Stock Status
                      </label>
-                     <input
+                     <select
                         {...register("stock_status", {
                            required: {
                               value: true,
@@ -241,7 +275,11 @@ const AddItem = () => {
                         type="text"
                         placeholder="Stock Status"
                         className="w-full p-3 border-b border-b-gray-300  outline-none duration-300 focus:border-[#A65F3F] "
-                     />
+                     >
+                        <option value=""></option>
+                        <option value="In stock">In Stock</option>
+                        <option value="Made to Order">Made to Order</option>
+                     </select>
                      {errors?.stock_status && (
                         <span className="text-red-500 block mt-1 mb-2 font-didact">
                            {errors.stock_status.message}
