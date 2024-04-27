@@ -190,6 +190,9 @@ const Register = () => {
 
                {/* PhotoURL Field */}
                <div className="mt-4">
+                  <label htmlFor="photoURL" className="block ">
+                     Photo
+                  </label>
                   <input
                      {...register("photoURL", {
                         required: {

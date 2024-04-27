@@ -57,7 +57,7 @@ const SingleItemPage = () => {
    return (
       <div className="max-w-[1170px] mx-auto w-[90%] md:w-[82%]">
          {/* grid container */}
-         <div className="border grid lg:grid-cols-7 gap-10 mt-[60px]">
+         <div className=" grid lg:grid-cols-7 gap-10 mt-[60px]">
             {/* img */}
             <div className="border border-bg-brownPrimary lg:col-span-4">
                <img src={image} alt={item_name} />
