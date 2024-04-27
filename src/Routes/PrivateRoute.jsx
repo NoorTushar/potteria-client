@@ -13,8 +13,6 @@ const PrivateRoute = ({ children }) => {
 
    const location = useLocation();
    const pathName = location.pathname;
-   console.log(pathName);
-
    if (loading) {
       return (
          <div className="min-h-[calc(100vh-80px)] flex items-center justify-center">
