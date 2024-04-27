@@ -3,12 +3,14 @@ import { Navigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import MyItemCard from "../../Components/MyItemCard/MyItemCard";
+import { Triangle } from "react-loader-spinner";
 
 export const ItemProvider = createContext(null);
 
 const MyItems = () => {
    const [loadedItems, setLoadedItems] = useState([]);
    const [toggle, setToggle] = useState(true);
+   const [itemLoading, setItemLoading] = useState(true);
    const params = useParams();
    const emailId = params.email;
    const { user } = useContext(AuthContext);
@@ -19,6 +21,7 @@ const MyItems = () => {
          .then((data) => {
             console.log(data);
             setLoadedItems(data);
+            setItemLoading(false);
          })
          .catch((err) => console.log(err));
    }, [toggle]);
@@ -36,6 +39,22 @@ const MyItems = () => {
          confirmButtonText: "Sorry",
       });
       return <Navigate to={"/"} />;
+   }
+
+   if (itemLoading) {
+      return (
+         <div className="min-h-[400px] flex items-center justify-center">
+            <Triangle
+               visible={true}
+               height="80"
+               width="80"
+               color="#8E6D45"
+               ariaLabel="triangle-loading"
+               wrapperStyle={{}}
+               wrapperClass=""
+            />
+         </div>
+      );
    }
 
    const itemContextValues = { toggle, setToggle };
