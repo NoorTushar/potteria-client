@@ -261,7 +261,7 @@ const AddItem = () => {
                      <label htmlFor="processing_time" className="block ">
                         Processing Time
                      </label>
-                     <input
+                     <select
                         {...register("processing_time", {
                            required: {
                               value: true,
@@ -271,7 +271,16 @@ const AddItem = () => {
                         type="text"
                         placeholder="Processing Time"
                         className="w-full p-3 border-b border-b-gray-300  outline-none duration-300 focus:border-[#A65F3F] "
-                     />
+                     >
+                        <option value=""></option>
+                        <option value="Upto 7 days">Upto 7 days</option>
+                        <option value="upto 14 days">upto 14 days</option>
+                        <option value="upto 21 days">upto 21 days</option>
+                        <option value="upto 28 days">upto 28 days</option>
+                        <option value="upto 35 days">upto 35 days</option>
+                        <option value="upto 42 days">upto 42 days</option>
+                        <option value="upto 49 days">upto 49 days</option>
+                     </select>
                      {errors?.processing_time && (
                         <span className="text-red-500 block mt-1 mb-2 font-didact">
                            {errors.processing_time.message}
