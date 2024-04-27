@@ -5,6 +5,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const AddItem = () => {
    const { theme, user } = useContext(AuthContext);
@@ -13,6 +14,7 @@ const AddItem = () => {
       register,
       handleSubmit,
       getValues,
+      reset,
       formState: { errors },
    } = useForm({
       defaultValues: {
@@ -28,6 +30,23 @@ const AddItem = () => {
       data.rating = parseFloat(data.rating);
       const item = data;
       console.log(item);
+
+      axios
+         .post("http://localhost:3000/items", item)
+         .then((data) => {
+            console.log(data.data);
+            reset();
+            Swal.fire({
+               title: "Success!",
+               text: "Item added successfully!",
+               icon: "success",
+
+               confirmButtonText: "Ok",
+            });
+         })
+         .catch((error) => {
+            console.log(error);
+         });
 
       // const image = getValues("image");
       // const item_name = getValues("item_name");
@@ -58,7 +77,7 @@ const AddItem = () => {
 
    return (
       <div className="min-h-[calc(100vh-100px)] max-w-[1170px] mx-auto w-[90%] md:w-[82%] flex flex-col items-center justify-center">
-         <div className="w-full mx-auto max-w-[70%] p-8  ">
+         <div className="w-full mx-auto md:max-w-[90%] p-8  ">
             <h1
                className={`text-3xl font-bold text-center tracking-[4px] ${
                   theme === "luxury" ? "text-blue-500" : "text-red-500"
@@ -68,7 +87,7 @@ const AddItem = () => {
             </h1>
 
             <form onSubmit={handleSubmit(onSubmit)} className="my-[60px]">
-               <div className="grid grid-cols-2 gap-6">
+               <div className="grid md:grid-cols-2 gap-6">
                   {/* image Field */}
                   <div>
                      <label htmlFor="image" className="block ">
