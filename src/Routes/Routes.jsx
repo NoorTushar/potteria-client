@@ -69,6 +69,9 @@ export const router = createBrowserRouter([
          },
          {
             path: "/updateItem/:id",
+            loader: ({ params }) => {
+               return fetch(`http://localhost:3000/items/${params.id}`);
+            },
             element: (
                <PrivateRoute>
                   <UpdateItemPage></UpdateItemPage>

@@ -271,12 +271,12 @@ const AddItem = () => {
                      >
                         <option value=""></option>
                         <option value="Upto 7 days">Upto 7 days</option>
-                        <option value="upto 14 days">upto 14 days</option>
-                        <option value="upto 21 days">upto 21 days</option>
-                        <option value="upto 28 days">upto 28 days</option>
-                        <option value="upto 35 days">upto 35 days</option>
-                        <option value="upto 42 days">upto 42 days</option>
-                        <option value="upto 49 days">upto 49 days</option>
+                        <option value="Upto 14 days">Upto 14 days</option>
+                        <option value="Upto 21 days">Upto 21 days</option>
+                        <option value="Upto 28 days">Upto 28 days</option>
+                        <option value="Upto 35 days">Upto 35 days</option>
+                        <option value="Upto 42 days">Upto 42 days</option>
+                        <option value="Upto 49 days">Upto 49 days</option>
                      </select>
                      {errors?.processing_time && (
                         <span className="text-red-500 block mt-1 mb-2 font-didact">

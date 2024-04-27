@@ -4,13 +4,15 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { Triangle } from "react-loader-spinner";
 
 const UpdateItemPage = () => {
    const { theme, user } = useContext(AuthContext);
    const params = useParams();
    const updateId = params.id;
+
+   const item = useLoaderData();
 
    //    useEffect(() => {
    //       axios
@@ -30,8 +32,15 @@ const UpdateItemPage = () => {
       formState: { errors },
    } = useForm({
       defaultValues: {
-         user_name: `${user.displayName}`,
-         user_email: `${user?.email || "Email hidden"}`,
+         image: `${item.image}`,
+         item_name: `${item.item_name}`,
+         subcategory_Name: `${item.subcategory_Name}`,
+         short_description: `${item.short_description}`,
+         price: `${item.price}`,
+         rating: `${item.rating}`,
+         customization: `${item.customization}`,
+         processing_time: `${item.processing_time}`,
+         stock_status: `${item.stock_status}`,
       },
    });
 
@@ -42,6 +51,53 @@ const UpdateItemPage = () => {
       data.rating = parseFloat(data.rating);
       const item = data;
       console.log(item);
+
+      // confirmation before deleting an item
+      Swal.fire({
+         title: "Are you sure?",
+         text: "Are you sure you want to update these fields?",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#3085d6",
+         cancelButtonColor: "#d33",
+         confirmButtonText: "Yes, Update It!",
+      }).then((result) => {
+         if (result.isConfirmed) {
+            // if we have have confirmed to press DELETE button
+            axios
+               .put(`http://localhost:3000/items/${updateId}`, item)
+               .then((response) => {
+                  console.log(response.data);
+                  if (response.data.modifiedCount > 0) {
+                     console.log(response.data);
+                     Swal.fire({
+                        title: "Success!",
+                        text: "Item update!",
+                        icon: "success",
+                        confirmButtonText: "Ok",
+                     });
+                  } else {
+                     Swal.fire({
+                        title: "Not updated",
+                        text: "You have not changed any values.",
+                        icon: "error",
+                        confirmButtonText: "Ok",
+                     });
+                  }
+               })
+               // if we have any errors while deleting:
+               .catch((error) => {
+                  const message = error.message;
+
+                  Swal.fire({
+                     title: "Error!",
+                     text: `${message}`,
+                     icon: "error",
+                     confirmButtonText: "Ok",
+                  });
+               });
+         }
+      });
 
       // const image = getValues("image");
       // const item_name = getValues("item_name");
@@ -269,12 +325,12 @@ const UpdateItemPage = () => {
                      >
                         <option value=""></option>
                         <option value="Upto 7 days">Upto 7 days</option>
-                        <option value="upto 14 days">upto 14 days</option>
-                        <option value="upto 21 days">upto 21 days</option>
-                        <option value="upto 28 days">upto 28 days</option>
-                        <option value="upto 35 days">upto 35 days</option>
-                        <option value="upto 42 days">upto 42 days</option>
-                        <option value="upto 49 days">upto 49 days</option>
+                        <option value="Upto 14 days">Upto 14 days</option>
+                        <option value="Upto 21 days">Upto 21 days</option>
+                        <option value="Upto 28 days">Upto 28 days</option>
+                        <option value="Upto 35 days">Upto 35 days</option>
+                        <option value="Upto 42 days">Upto 42 days</option>
+                        <option value="Upto 49 days">Upto 49 days</option>
                      </select>
                      {errors?.processing_time && (
                         <span className="text-red-500 block mt-1 mb-2 font-didact">
@@ -309,63 +365,6 @@ const UpdateItemPage = () => {
                         </span>
                      )}
                   </div>
-
-                  {/* name field */}
-                  <div className="">
-                     <label htmlFor="user_name" className="block ">
-                        User Name
-                     </label>
-                     <input
-                        {...register("user_name", {
-                           required: {
-                              value: true,
-                              message: "Must provide a user_name.",
-                           },
-                        })}
-                        disabled
-                        type="text"
-                        name="user_name"
-                        placeholder="User name"
-                        className="w-full p-3 border-b border-b-gray-300  outline-none duration-300 focus:border-[#A65F3F] "
-                     />
-
-                     {errors?.user_name && (
-                        <span className="text-red-500 block mt-1 mb-2 font-didact">
-                           {errors.user_name.message}
-                        </span>
-                     )}
-                  </div>
-
-                  {/* email field */}
-                  <div className="">
-                     <label htmlFor="user_email" className="block ">
-                        User Email
-                     </label>
-                     <input
-                        {...register("user_email", {
-                           required: {
-                              value: true,
-                              message: "Must provide an email",
-                           },
-                           pattern: {
-                              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                              message: "Must provide a valid email address",
-                           },
-                        })}
-                        disabled
-                        type="email"
-                        name="user_email"
-                        id="user_email"
-                        placeholder="Email"
-                        className="w-full p-3 border-b border-b-gray-300  outline-none duration-300 focus:border-[#A65F3F] "
-                     />
-
-                     {errors?.user_email && (
-                        <span className="text-red-500 block mt-1 mb-2 font-didact">
-                           {errors.user_email.message}
-                        </span>
-                     )}
-                  </div>
                </div>
 
                {/* short_description Field */}
@@ -395,7 +394,7 @@ const UpdateItemPage = () => {
                   <button className="  relative inline-flex items-center justify-start px-5 py-2 overflow-hidden font-medium transition-all bg-white  hover:bg-white group border-2 border-[#a65f3f] text-[14px] tracking-[1.2px]">
                      <span className="w-48 h-48 rounded rotate-[-40deg] bg-[#a65f3f]  absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
                      <span className="relative w-full text-[#a65f3f] transition-colors duration-300 ease-in-out group-hover:text-white text-center">
-                        ADD ITEM
+                        UPDATE ITEM
                      </span>
                   </button>
                </div>
