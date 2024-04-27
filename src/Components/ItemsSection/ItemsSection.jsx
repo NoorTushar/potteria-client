@@ -7,22 +7,10 @@ const ItemsSection = () => {
    const [itemLoading, setItemLoading] = useState(true);
    const [allItems, setAllItems] = useState([]);
 
-   // using fetch method to get all items
-   // useEffect(() => {
-   //    fetch("http://localhost:3000/items")
-   //       .then((res) => res.json())
-   //       .then((data) => {
-   //          setItemLoading(false);
-   //          setAllItems(data);
-   //       });
-   // }, []);
-
-   // using axios (1) to get all items
    useEffect(() => {
       axios
          .get("http://localhost:3000/items")
          .then((data) => {
-            console.log(data.data);
             setItemLoading(false);
             setAllItems(data.data);
          })
