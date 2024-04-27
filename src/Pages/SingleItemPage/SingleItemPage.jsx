@@ -8,7 +8,6 @@ const SingleItemPage = () => {
    const [singleItem, setSingleItem] = useState({});
 
    const {
-      _id,
       image,
       item_name,
       price,
@@ -18,8 +17,6 @@ const SingleItemPage = () => {
       customization,
       processing_time,
       stock_status,
-      user_email,
-      user_name,
    } = singleItem;
 
    // getting id from the URL
@@ -58,9 +55,77 @@ const SingleItemPage = () => {
    }
 
    return (
-      <div>
-         <h3>Single Item Page for id: {requestId}</h3>
-         <p>From mongo data id: {_id}</p>
+      <div className="max-w-[1170px] mx-auto w-[90%] md:w-[82%]">
+         {/* grid container */}
+         <div className="border grid lg:grid-cols-7 gap-10 mt-[60px]">
+            {/* img */}
+            <div className="border border-bg-brownPrimary lg:col-span-4">
+               <img src={image} alt={item_name} />
+            </div>
+            {/* details */}
+            <div className="lg:col-span-3">
+               <h2 className="uppercase text-brownPrimary text-[35px] font-medium tracking-[5.8px] -mt-3">
+                  {item_name}
+               </h2>
+               <p className="text-[#58595b] capitalize leading-[25px] font-light my-2">
+                  Rating: {rating}
+               </p>
+               <h4 className="uppercase text-brownPrimary text-[23px] font-medium     tracking-[3.8px]">
+                  ${price.toFixed(2)}
+               </h4>
+
+               <div className="*:mb-3 mt-6">
+                  {/* stock status */}
+                  <div className="flex items-center gap-2">
+                     <h3 className="uppercase text-[17px] tracking-[2.8px] font-medium text-brownPrimary ">
+                        in stock:{" "}
+                     </h3>
+                     <p className="text-[#58595b] capitalize leading-[25px] font-light">
+                        {stock_status}
+                     </p>
+                  </div>
+                  {/* subcategory */}
+                  <div className="flex items-center gap-2">
+                     <h3 className="uppercase text-[17px] tracking-[2.8px] font-medium text-brownPrimary ">
+                        category:{" "}
+                     </h3>
+                     <p className="text-[#58595b] capitalize leading-[25px] font-light">
+                        {subcategory_Name}
+                     </p>
+                  </div>
+
+                  {/* customization */}
+                  <div className="flex items-center gap-2">
+                     <h3 className="uppercase text-[17px] tracking-[2.8px] font-medium text-brownPrimary ">
+                        customization:{" "}
+                     </h3>
+                     <p className="text-[#58595b] capitalize leading-[25px] font-light">
+                        {customization}
+                     </p>
+                  </div>
+
+                  {/* processing */}
+                  <div className="flex items-center gap-2">
+                     <h3 className="uppercase text-[17px] tracking-[2.8px] font-medium text-brownPrimary ">
+                        processing time:{" "}
+                     </h3>
+                     <p className="text-[#58595b] capitalize leading-[25px] font-light">
+                        {processing_time}
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         {/* bottom short description section */}
+         <div className="mt-6">
+            <p className="text-brownPrimary tracking-[1.2px] w-min uppercase border-b border-b-amber-800 py-2">
+               description
+            </p>
+            <p className="text-[#58595b] leading-[25px] font-light my-3">
+               {short_description}
+            </p>
+         </div>
       </div>
    );
 };
