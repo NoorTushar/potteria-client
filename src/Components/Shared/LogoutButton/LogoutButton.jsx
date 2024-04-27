@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const LogoutButton = () => {
    const { logoutUser } = useContext(AuthContext);
+   const navigate = useNavigate();
 
    // logout user
    const handleLogOut = (e) => {
@@ -11,6 +12,7 @@ const LogoutButton = () => {
       logoutUser()
          .then(() => {
             console.log(`success logout`);
+            navigate("/");
          })
          .catch((error) => console.error(error));
    };

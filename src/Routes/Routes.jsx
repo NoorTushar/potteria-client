@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddItem from "../Pages/AddItem/AddItem";
 import UpdateProfilePage from "../Pages/UpdateProfilePage/UpdateProfilePage";
 import SingleItemPage from "../Pages/SingleItemPage/SingleItemPage";
+import MyItems from "../Pages/MyItems/MyItems";
 
 export const router = createBrowserRouter([
    {
@@ -46,6 +47,14 @@ export const router = createBrowserRouter([
             element: (
                <PrivateRoute>
                   <AddItem></AddItem>
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "/myItems/:email",
+            element: (
+               <PrivateRoute>
+                  <MyItems></MyItems>
                </PrivateRoute>
             ),
          },

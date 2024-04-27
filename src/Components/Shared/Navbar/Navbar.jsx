@@ -84,9 +84,16 @@ const Navbar = () => {
 
                   {/* show only when user is available */}
                   {user && (
-                     <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
-                        <NavLink to={"/addItem"}>Add Item</NavLink>
-                     </li>
+                     <>
+                        <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
+                           <NavLink to={"/addItem"}>Add Item</NavLink>
+                        </li>
+                        <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
+                           <NavLink to={`/myItems/${user.email}`}>
+                              my items
+                           </NavLink>
+                        </li>
+                     </>
                   )}
                </ul>
             </div>
@@ -102,9 +109,16 @@ const Navbar = () => {
                {navItems}
                {/* show only when user is available */}
                {user && (
-                  <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
-                     <NavLink to={"/addItem"}>Add Item</NavLink>
-                  </li>
+                  <>
+                     <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
+                        <NavLink to={"/addItem"}>Add Item</NavLink>
+                     </li>
+                     <li className="my-nav-item text-brownPrimary tracking-[1.2px]">
+                        <NavLink to={`/myItems/${user.email}`}>
+                           my items
+                        </NavLink>
+                     </li>
+                  </>
                )}
             </ul>
          </div>
