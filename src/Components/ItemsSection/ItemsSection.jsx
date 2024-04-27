@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Triangle } from "react-loader-spinner";
 import ItemCard from "../ItemCard/ItemCard";
+import axios from "axios";
 
 const ItemsSection = () => {
    const [itemLoading, setItemLoading] = useState(true);
@@ -8,12 +9,27 @@ const ItemsSection = () => {
 
    console.log(allItems);
 
+   // using fetch method to get all items
+   // useEffect(() => {
+   //    fetch("http://localhost:3000/items")
+   //       .then((res) => res.json())
+   //       .then((data) => {
+   //          setItemLoading(false);
+   //          setAllItems(data);
+   //       });
+   // }, []);
+
+   // using axios to get all items
    useEffect(() => {
-      fetch("http://localhost:3000/items")
-         .then((res) => res.json())
+      axios
+         .get("http://localhost:3000/items")
          .then((data) => {
+            console.log(data.data);
             setItemLoading(false);
-            setAllItems(data);
+            setAllItems(data.data);
+         })
+         .catch((error) => {
+            console.log(error);
          });
    }, []);
 
