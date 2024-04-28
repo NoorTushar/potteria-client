@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import { Triangle } from "react-loader-spinner";
 import ItemCard from "../ItemCard/ItemCard";
 import axios from "axios";
+import SubCategoryCard from "../SubCategoryCard/SubCategoryCard";
 
-const ItemsSection = () => {
+const SubCategorySection = () => {
    const [itemLoading, setItemLoading] = useState(true);
    const [allItems, setAllItems] = useState([]);
 
    useEffect(() => {
       axios
-         .get("http://localhost:3000/items")
+         .get("http://localhost:3000/subCategories")
          .then((data) => {
             setItemLoading(false);
             setAllItems(data.data);
@@ -39,13 +40,15 @@ const ItemsSection = () => {
       <div>
          <h3>Items: {allItems.length}</h3>
 
-         <div className="grid md:grid-cols-2 gap-6">
+         <div className="grid md:grid-cols-2 lg:grid-cols-3">
             {allItems.slice(0, 6).map((item) => {
-               return <ItemCard item={item} key={item._id}></ItemCard>;
+               return (
+                  <SubCategoryCard item={item} key={item._id}></SubCategoryCard>
+               );
             })}
          </div>
       </div>
    );
 };
 
-export default ItemsSection;
+export default SubCategorySection;

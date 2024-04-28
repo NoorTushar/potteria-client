@@ -157,8 +157,8 @@ const AddItem = () => {
                         <option value="Ceramics & Architectural">
                            Ceramics & Architectural
                         </option>
-                        <option value="Home decor pottery">
-                           Home decor pottery
+                        <option value="Home Decor Pottery">
+                           Home Decor Pottery
                         </option>
                      </select>
                      {errors?.subcategory_Name && (
