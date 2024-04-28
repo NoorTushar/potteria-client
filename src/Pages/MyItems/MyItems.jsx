@@ -57,11 +57,50 @@ const MyItems = () => {
       );
    }
 
+   const handleFilterCustomization = (e) => {
+      const selectedOption = e.target.value;
+      console.log(selectedOption);
+      if (selectedOption === "yes") {
+         const filteredArray = loadedItems.filter(
+            (item) => item.customization === "yes"
+         );
+         console.log(filteredArray);
+      } else if (selectedOption === "no") {
+         const filteredArray = loadedItems.filter(
+            (item) => item.customization === "no"
+         );
+         console.log(filteredArray);
+      } else if (selectedOption === "any") {
+         const filteredArray = loadedItems;
+         console.log(filteredArray);
+      }
+   };
+
    const itemContextValues = { toggle, setToggle };
    return (
       <ItemProvider.Provider value={itemContextValues}>
          <div className="max-w-[1170px] mx-auto w-[90%] md:w-[82%]">
             <h3 className="uppercase">Items of {emailId}. Total items:</h3>
+
+            {/* Filter option for customization */}
+            <div>
+               <h3 className="text-2xl">Filter: </h3>
+               <form>
+                  <div className="">
+                     <label htmlFor="customization">Customization</label>
+                     <select
+                        onChange={(e) => handleFilterCustomization(e)}
+                        name="customization"
+                        id=""
+                        className="border w-[200px] p-2"
+                     >
+                        <option value="any">Any</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                     </select>
+                  </div>
+               </form>
+            </div>
 
             {/* item gallery */}
             <div className="grid md:grid-cols-2 gap-6">
