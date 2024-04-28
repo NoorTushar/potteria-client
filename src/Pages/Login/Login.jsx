@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import Success from "../../../public/lottie.json";
 import Lottie from "lottie-react";
 import { IoMdEyeOff, IoMdEye } from "react-icons/io";
+import FormTopAnimation from "../../assets/Form-Top-Animation.json";
+import PageTopWaveAnimation from "../../../public/PageTopWaveAnimation.json";
 
 const Login = () => {
    // toggle show/ hide password - (1)
@@ -110,11 +112,15 @@ const Login = () => {
    };
 
    return (
-      <div className="min-h-[calc(100vh-100px)] flex flex-col items-center justify-center">
+      <div className="min-h-[calc(100vh-100px)]">
+         <div className="h-16 overflow-hidden">
+            <Lottie
+               loop={true}
+               animationData={PageTopWaveAnimation}
+               className="w-full "
+            />
+         </div>
          <div className="w-full mx-auto max-w-md p-8 space-y-3  ">
-            <div className="size-20">
-               <Lottie loop={true} animationData={Success}></Lottie>
-            </div>
             <h1
                className={`text-3xl font-bold text-center tracking-[4px] ${
                   theme === "luxury" ? "text-blue-500" : "text-red-500"
@@ -123,7 +129,10 @@ const Login = () => {
                LOGIN
             </h1>
             {/* // React-Hook-Form: (3) */}
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <form
+               onSubmit={handleSubmit(onSubmit)}
+               className="space-y-6 relative"
+            >
                {/* email field */}
                <div className="space-y-1 text-sm">
                   <label htmlFor="email" className="block ">
@@ -145,7 +154,7 @@ const Login = () => {
                      name="email"
                      id="email"
                      placeholder="Email"
-                     className="w-full p-3 border-b border-gray-100  outline-none duration-300 focus:border-[#A65F3F] "
+                     className="w-full p-3 border-b border-gray-100  outline-none duration-300 focus:border-[#A65F3F] bg-transparent"
                   />
                   {/* // React-Hook-Form: (5) */}
                   {errors?.email && (
@@ -174,7 +183,7 @@ const Login = () => {
                         name="password"
                         id="password"
                         placeholder="Password"
-                        className="w-full p-3 border-b border-gray-100  outline-none duration-300 focus:border-[#A65F3F] "
+                        className="w-full p-3 border-b border-gray-100  outline-none duration-300 focus:border-[#A65F3F] bg-transparent"
                      />
                      {/*  // toggle show/ hide password - (2) */}
                      {showPassword ? (
