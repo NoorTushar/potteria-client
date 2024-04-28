@@ -1,6 +1,7 @@
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import ItemsSection from "../../Components/ItemsSection/ItemsSection";
 import SubCategorySection from "../../Components/SubCategorySection/SubCategorySection";
+import Banner from "../../Components/Banner/Banner";
 
 const Home = () => {
    const [text] = useTypewriter({
@@ -17,7 +18,8 @@ const Home = () => {
    });
    return (
       <div>
-         <h3 className="text-2xl text-center">Banner Section Coming Soon</h3>
+         {/* banner */}
+         <Banner></Banner>
 
          {/* Items Section */}
          <section>
