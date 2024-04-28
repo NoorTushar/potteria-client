@@ -1,0 +1,22 @@
+.swiper-button-prev,
+.swiper-button-next {
+   color: goldenrod;
+}
+.swiper-pagination-bullet {
+   background-color: goldenrod;
+   width: 20px;
+   height: 5px;
+   border-radius: 0;
+   -webkit-border-radius: 0;
+   -moz-border-radius: 0;
+   -ms-border-radius: 0;
+   -o-border-radius: 0;
+}
+
+/* Media query to hide swiper buttons on mobile or small devices */
+@media screen and (max-width: 767px) {
+   .swiper-button-prev,
+   .swiper-button-next {
+      display: none;
+   }
+}

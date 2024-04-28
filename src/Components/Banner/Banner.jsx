@@ -1,9 +1,12 @@
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 // import Swiper bundle with all modules installed
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // import styles bundle
 import "swiper/css/bundle";
+// import required modules
+import { Pagination, Navigation } from "swiper/modules";
+
+import "./Banner.css";
 
 const Banner = () => {
    const [text] = useTypewriter({
@@ -14,7 +17,17 @@ const Banner = () => {
    });
    return (
       <>
-         <Swiper className="mySwiper">
+         <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            pagination={{
+               clickable: true,
+            }}
+            navigation={true}
+            modules={[Pagination, Navigation]}
+            className="mySwiper"
+         >
             <SwiperSlide>
                {/* // banner item - 1 */}
 
@@ -26,7 +39,7 @@ const Banner = () => {
                   }}
                >
                   <div className="hero-overlay bg-black bg-opacity-60"></div>
-                  <div className="hero-content max-w-3xl  text-center text-neutral-content">
+                  <div className="hero-content px-10 max-w-3xl  text-center text-neutral-content">
                      <div className="">
                         <h2 className="text-4xl leading-[44px] lg:text-[56px] lg:leading-[60px] font-medium tracking-[5.7px] uppercase  ">
                            Exploring the Art of <span>{text}</span>{" "}
@@ -54,7 +67,7 @@ const Banner = () => {
                   }}
                >
                   <div className="hero-overlay bg-black bg-opacity-60"></div>
-                  <div className="hero-content max-w-3xl  text-center text-neutral-content">
+                  <div className="hero-content px-10 max-w-3xl  text-center text-neutral-content">
                      <div className="">
                         <h2 className="text-4xl leading-[44px] lg:text-[56px] lg:leading-[60px] font-medium tracking-[5.7px] uppercase  ">
                            Exploring the Art of <span>{text}</span>{" "}
@@ -81,7 +94,7 @@ const Banner = () => {
                   }}
                >
                   <div className="hero-overlay bg-black bg-opacity-60"></div>
-                  <div className="hero-content max-w-3xl  text-center text-neutral-content">
+                  <div className="hero-content px-10 max-w-3xl  text-center text-neutral-content">
                      <div className="">
                         <h2 className="text-4xl leading-[44px] lg:text-[56px] lg:leading-[60px] font-medium tracking-[5.7px] uppercase  ">
                            Exploring the Art of <span>{text}</span>{" "}
