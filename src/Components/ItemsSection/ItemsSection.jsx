@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import { Triangle } from "react-loader-spinner";
 import ItemCard from "../ItemCard/ItemCard";
 import axios from "axios";
+import { useTypewriter } from "react-simple-typewriter";
 
 const ItemsSection = () => {
+   const { text } = useTypewriter({
+      words: ["Products"],
+      loop: {},
+      typeSpeed: 120,
+      deleteSpeed: 80,
+   });
    const [itemLoading, setItemLoading] = useState(true);
    const [allItems, setAllItems] = useState([]);
 
