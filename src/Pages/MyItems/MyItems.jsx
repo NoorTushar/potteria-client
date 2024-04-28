@@ -9,24 +9,26 @@ export const ItemProvider = createContext(null);
 
 const MyItems = () => {
    const [loadedItems, setLoadedItems] = useState([]);
+   const [filteredItems, setFilteredItems] = useState([]);
    const [toggle, setToggle] = useState(true);
    const [itemLoading, setItemLoading] = useState(true);
    const params = useParams();
    const emailId = params.email;
    const { user } = useContext(AuthContext);
-
    useEffect(() => {
       fetch(`http://localhost:3000/myItems/${emailId}`)
          .then((res) => res.json())
          .then((data) => {
-            console.log(data);
             setLoadedItems(data);
             setItemLoading(false);
          })
          .catch((err) => console.log(err));
    }, [toggle]);
 
-   console.log(loadedItems);
+   // Update filteredItems whenever loadedItems changes
+   useEffect(() => {
+      setFilteredItems(loadedItems);
+   }, [loadedItems]);
 
    // here if anyone tries to access data of others by
    // changing url while logged in, he will be redirected
@@ -64,19 +66,21 @@ const MyItems = () => {
          const filteredArray = loadedItems.filter(
             (item) => item.customization === "yes"
          );
-         console.log(filteredArray);
+         setFilteredItems(filteredArray);
       } else if (selectedOption === "no") {
          const filteredArray = loadedItems.filter(
             (item) => item.customization === "no"
          );
-         console.log(filteredArray);
+         setFilteredItems(filteredArray);
       } else if (selectedOption === "any") {
          const filteredArray = loadedItems;
-         console.log(filteredArray);
+         setFilteredItems(filteredArray);
       }
    };
 
    const itemContextValues = { toggle, setToggle };
+
+   console.log(filteredItems);
    return (
       <ItemProvider.Provider value={itemContextValues}>
          <div className="max-w-[1170px] mx-auto w-[90%] md:w-[82%]">
@@ -104,7 +108,7 @@ const MyItems = () => {
 
             {/* item gallery */}
             <div className="grid md:grid-cols-2 gap-6">
-               {loadedItems.map((item) => {
+               {filteredItems.map((item) => {
                   return <MyItemCard item={item} key={item._id}></MyItemCard>;
                })}
             </div>
