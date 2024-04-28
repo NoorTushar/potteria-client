@@ -4,6 +4,8 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import MyItemCard from "../../Components/MyItemCard/MyItemCard";
 import { Triangle } from "react-loader-spinner";
+import Lottie from "lottie-react";
+import PageTopWaveAnimation from "../../../public/PageTopWaveAnimation.json";
 
 export const ItemProvider = createContext(null);
 
@@ -84,6 +86,13 @@ const MyItems = () => {
    return (
       <ItemProvider.Provider value={itemContextValues}>
          <div className="max-w-[1170px] mx-auto w-[90%] md:w-[82%]">
+            <div style={{ height: "150px" }} className="">
+               <Lottie
+                  loop={true}
+                  animationData={PageTopWaveAnimation}
+                  style={{ width: "100%" }}
+               />
+            </div>
             <h3 className="uppercase">Items of {emailId}. Total items:</h3>
 
             {/* Filter option for customization */}
