@@ -12,6 +12,7 @@ import UpdateProfilePage from "../Pages/UpdateProfilePage/UpdateProfilePage";
 import SingleItemPage from "../Pages/SingleItemPage/SingleItemPage";
 import MyItems from "../Pages/MyItems/MyItems";
 import UpdateItemPage from "../Pages/UpdateItemPage/UpdateItemPage";
+import SubCategoryPage from "../Pages/SubCategoryPage/SubCategoryPage";
 
 export const router = createBrowserRouter([
    {
@@ -77,6 +78,15 @@ export const router = createBrowserRouter([
                   <UpdateItemPage></UpdateItemPage>
                </PrivateRoute>
             ),
+         },
+         {
+            path: "/subCategory/:sub_name",
+            element: <SubCategoryPage></SubCategoryPage>,
+            loader: ({ params }) => {
+               return fetch(
+                  `http://localhost:3000/subcategories/${params.sub_name}`
+               );
+            },
          },
       ],
    },

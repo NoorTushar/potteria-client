@@ -10,10 +10,10 @@ const SubCategoryCard = ({ item }) => {
          </figure>
          <div className="absolute inset-0 flex justify-center items-center ">
             <Link
-               to={"/"}
-               className="w-[40%] text-center bg-brownPrimary bg-opacity-80 cursor-pointer"
+               to={`/subCategory/${sub_name}`}
+               className="w-[50%] text-center bg-brownPrimary bg-opacity-80 cursor-pointer"
             >
-               <button className="py-3 text-white uppercase font-Alegreya">
+               <button className="py-3 text-white uppercase font-Alegreya tracking-[2px] break-words">
                   {sub_name}
                </button>
             </Link>
