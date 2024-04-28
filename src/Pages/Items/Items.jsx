@@ -24,7 +24,7 @@ const Items = () => {
    // using axios (2) to get a single item
    useEffect(() => {
       axios
-         .get(`http://localhost:3000/items`)
+         .get(`https://potteria-server.vercel.app/items`)
          .then((data) => {
             console.log(data.data);
             setAllItems(data.data);
