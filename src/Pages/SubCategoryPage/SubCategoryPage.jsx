@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { Cursor } from "react-simple-typewriter";
+import SubCategoryPageCard from "../../Components/SubCategoryPageCard/SubCategoryPageCard";
 
 const SubCategoryPage = () => {
    const categoryData = useLoaderData();
@@ -9,10 +10,15 @@ const SubCategoryPage = () => {
    const searchCategory = params.sub_name;
    console.log(searchCategory);
 
+   const [items, setItems] = useState([]);
+
    useEffect(() => {
       fetch(`http://localhost:3000/subcategories/${searchCategory}/items`)
          .then((res) => res.json())
-         .then((data) => console.log(data))
+         .then((data) => {
+            console.log(data);
+            setItems(data);
+         })
          .catch((err) => console.error(err));
    }, []);
 
@@ -27,6 +33,22 @@ const SubCategoryPage = () => {
             <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
                {categoryData.sub_name}
             </p>
+         </div>
+
+         {/* card section of sub category page */}
+         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {items.length > 0 ? (
+               items.map((item) => {
+                  return (
+                     <SubCategoryPageCard
+                        key={item._id}
+                        item={item}
+                     ></SubCategoryPageCard>
+                  );
+               })
+            ) : (
+               <p className="text-2xl">No items yet in this category.</p>
+            )}
          </div>
 
          {/* section title */}
