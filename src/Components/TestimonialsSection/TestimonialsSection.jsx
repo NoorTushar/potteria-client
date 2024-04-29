@@ -7,7 +7,7 @@ import "swiper/css/bundle";
 // import required modules
 import "swiper/css/pagination";
 
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 import "./TestimonialsSection.css";
 
@@ -18,7 +18,13 @@ const TestimonialsSection = () => {
             pagination={{
                clickable: true,
             }}
-            modules={[Pagination]}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+               delay: 3500,
+               disableOnInteraction: false,
+            }}
+            modules={[Pagination, Autoplay]}
             className="mySwiper"
          >
             {/* https://i.ibb.co/PZNzgD2/kevin.jpg
