@@ -130,7 +130,7 @@ const Navbar = () => {
                      className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
                      type="checkbox"
                      onChange={handleToggle}
-                     // show toggle image based on localstorage theme
+                     // show toggle image based on local storage theme
                      checked={theme === "light" ? false : true}
                   />
                   <svg
@@ -182,7 +182,7 @@ const Navbar = () => {
                   </div>
                   <ul
                      tabIndex={0}
-                     className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 space-y-2"
+                     className="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-52 space-y-2"
                   >
                      <li className="text-center text-brownPrimary text-base">
                         {`Welcome ${user.displayName} !`}
