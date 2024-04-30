@@ -288,7 +288,7 @@ const Login = () => {
                   </svg>
                </button>
             </div>
-            <p className="text-xs text-center sm:px-6  text-gray-400">
+            <p className="text-xs text-center sm:px-6 ">
                Do not have an account?
                {/* // after registration correct redirection - (2) */}
                <Link

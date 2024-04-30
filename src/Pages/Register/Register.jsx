@@ -253,9 +253,9 @@ const Register = () => {
                   </svg>
                </button>
             </div>
-            <p className="text-xs text-center sm:px-6  text-gray-400">
+            <p className="text-xs text-center sm:px-6  ">
                Already have an account?
-               <Link to={"/login"} className="underline text-gray-100 ">
+               <Link to={"/login"} className="underline ">
                   Login
                </Link>
             </p>
