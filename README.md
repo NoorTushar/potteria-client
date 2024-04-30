@@ -1,4 +1,4 @@
-# Website: Echelon
+# Website: Potteria
 
 Live link: https://potteria-auth.web.app/
 
