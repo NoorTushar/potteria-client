@@ -13,7 +13,7 @@ import "./TestimonialsSection.css";
 
 const TestimonialsSection = () => {
    return (
-      <section className="max-w-[1170px] mx-auto w-[90%] md:w-[80%]">
+      <div className="max-w-[1170px] mx-auto w-[90%] md:w-[80%]">
          <Swiper
             pagination={{
                clickable: true,
@@ -153,7 +153,7 @@ https://i.ibb.co/1rtd4xJ/zech.jpg */}
                </div>
             </SwiperSlide>
          </Swiper>
-      </section>
+      </div>
    );
 };
 

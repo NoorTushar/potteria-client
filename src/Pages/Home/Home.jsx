@@ -6,6 +6,12 @@ import TestimonialsSection from "../../Components/TestimonialsSection/Testimonia
 import WhyUs from "../../Components/WhyUs/WhyUs";
 import CounterSection from "../../Components/CounterSection/CounterSection";
 
+// lottie files
+
+import BackGroundWave from "../../assets/background-wave.json";
+import NewYearLights from "../../assets/animation-new-year.json";
+import Lottie from "lottie-react";
+
 const Home = () => {
    const [text] = useTypewriter({
       words: ["Popular", "Famous"],
@@ -39,7 +45,10 @@ const Home = () => {
          <Banner></Banner>
 
          {/* Items Section */}
-         <section className="mx-auto max-w-[1170px] md:w-[82%] w-[90%] py-[70px] md:py-[90px] lg:py-[100px]">
+         <section className="mx-auto max-w-[1170px] md:w-[82%] w-[90%] py-[70px] md:py-[90px] lg:py-[100px] relative">
+            <div className="w-full absolute top-0 -z-40">
+               <Lottie loop={true} animationData={NewYearLights}></Lottie>
+            </div>
             {/* section title */}
             <div className="text-center space-y-3 mb-[50px] md:mb-[70px] lg:mb-[80px]">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
@@ -62,7 +71,7 @@ const Home = () => {
          </section>
 
          {/* SubCategories Section */}
-         <section className="py-[50px] md:py-[70px] lg:py-[80px]">
+         <section className="py-[50px] md:py-[70px] lg:py-[80px] ">
             {/* section title */}
             <div className="text-center space-y-3 mb-[50px] md:mb-[70px] lg:mb-[80px]">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
@@ -79,7 +88,10 @@ const Home = () => {
          </section>
 
          {/* Testimonials Section */}
-         <section className="">
+         <section className="relative overflow-hidden">
+            {/* <div className="w-full my-6 absolute -z-50 top-0 left-0">
+               <Lottie loop={true} animationData={BackGroundWave}></Lottie>
+            </div> */}
             {/* section title */}
             <div className="text-center space-y-3 mb-[50px] md:mb-[70px] lg:mb-[80px]">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
