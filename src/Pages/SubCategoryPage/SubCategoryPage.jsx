@@ -13,7 +13,9 @@ const SubCategoryPage = () => {
    const [items, setItems] = useState([]);
 
    useEffect(() => {
-      fetch(`http://localhost:3000/subcategories/${searchCategory}/items`)
+      fetch(
+         `https://potteria-server.vercel.app/subcategories/${searchCategory}/items`
+      )
          .then((res) => res.json())
          .then((data) => {
             console.log(data);

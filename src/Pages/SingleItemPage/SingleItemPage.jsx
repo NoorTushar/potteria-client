@@ -26,7 +26,7 @@ const SingleItemPage = () => {
    // using axios (2) to get a single item
    useEffect(() => {
       axios
-         .get(`http://localhost:3000/items/${requestId}`)
+         .get(`https://potteria-server.vercel.app/items/${requestId}`)
          .then((data) => {
             console.log(data.data);
             setSingleItem(data.data);

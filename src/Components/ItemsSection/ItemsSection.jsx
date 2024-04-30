@@ -9,7 +9,7 @@ const ItemsSection = () => {
 
    useEffect(() => {
       axios
-         .get("http://localhost:3000/items")
+         .get("https://potteria-server.vercel.app/items")
          .then((data) => {
             setItemLoading(false);
             setAllItems(data.data);

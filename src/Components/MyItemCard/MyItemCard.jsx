@@ -42,7 +42,7 @@ const MyItemCard = ({ item }) => {
          if (result.isConfirmed) {
             // if we have have confirmed to press DELETE button
             axios
-               .delete(`http://localhost:3000/items/${itemId}`)
+               .delete(`https://potteria-server.vercel.app/items/${itemId}`)
                .then((response) => {
                   if (response.data.deletedCount > 0) {
                      console.log(response.data);

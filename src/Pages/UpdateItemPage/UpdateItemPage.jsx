@@ -16,7 +16,7 @@ const UpdateItemPage = () => {
 
    //    useEffect(() => {
    //       axios
-   //          .get(`http://localhost:3000/items/${updateId}`)
+   //          .get(`https://potteria-server.vercel.app/items/${updateId}`)
    //          .then((data) => {
    //             console.log(data.data);
    //          })
@@ -65,7 +65,10 @@ const UpdateItemPage = () => {
          if (result.isConfirmed) {
             // if we have have confirmed to press DELETE button
             axios
-               .put(`http://localhost:3000/items/${updateId}`, item)
+               .put(
+                  `https://potteria-server.vercel.app/items/${updateId}`,
+                  item
+               )
                .then((response) => {
                   console.log(response.data);
                   if (response.data.modifiedCount > 0) {

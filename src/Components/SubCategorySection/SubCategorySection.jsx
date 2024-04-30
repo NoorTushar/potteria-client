@@ -10,7 +10,7 @@ const SubCategorySection = () => {
 
    useEffect(() => {
       axios
-         .get("http://localhost:3000/subCategories")
+         .get("https://potteria-server.vercel.app/subCategories")
          .then((data) => {
             setItemLoading(false);
             setAllItems(data.data);

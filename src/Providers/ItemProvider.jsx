@@ -6,7 +6,7 @@
 //    const [itemLoading, setItemLoading] = useState(true);
 
 //    useEffect(() => {
-//       fetch("http://localhost:3000/items")
+//       fetch("https://potteria-server.vercel.app/items")
 //          .then((res) => res.json())
 //          .then((data) => {
 //             console.log(data);

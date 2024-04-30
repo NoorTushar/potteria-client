@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className="footer gap-3 md:gap-5 footer-center p-10  text-base-content rounded">
          <div>
             <figure>
-               <img className="size-10" src="/public/leaf_icon.png" alt="" />
+               <img className="size-10" src="/leaf_icon.png" alt="" />
             </figure>
             <h2 className="font-Alegreya text-2xl md:text-3xl font-light text-brownPrimary tracking-[1.2px]">
                Potteria

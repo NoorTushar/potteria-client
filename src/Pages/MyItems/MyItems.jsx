@@ -23,7 +23,7 @@ const MyItems = () => {
    const emailId = params.email;
    const { user } = useContext(AuthContext);
    useEffect(() => {
-      fetch(`http://localhost:3000/myItems/${emailId}`)
+      fetch(`https://potteria-server.vercel.app/myItems/${emailId}`)
          .then((res) => res.json())
          .then((data) => {
             setLoadedItems(data);

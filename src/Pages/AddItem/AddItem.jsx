@@ -34,7 +34,7 @@ const AddItem = () => {
       console.log(item);
 
       axios
-         .post("http://localhost:3000/items", item)
+         .post("https://potteria-server.vercel.app/items", item)
          .then((data) => {
             console.log(data.data);
             reset();

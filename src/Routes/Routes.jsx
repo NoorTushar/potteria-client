@@ -71,7 +71,9 @@ export const router = createBrowserRouter([
          {
             path: "/updateItem/:id",
             loader: ({ params }) => {
-               return fetch(`http://localhost:3000/items/${params.id}`);
+               return fetch(
+                  `https://potteria-server.vercel.app/items/${params.id}`
+               );
             },
             element: (
                <PrivateRoute>
@@ -84,7 +86,7 @@ export const router = createBrowserRouter([
             element: <SubCategoryPage></SubCategoryPage>,
             loader: ({ params }) => {
                return fetch(
-                  `http://localhost:3000/subcategories/${params.sub_name}`
+                  `https://potteria-server.vercel.app/subcategories/${params.sub_name}`
                );
             },
          },
