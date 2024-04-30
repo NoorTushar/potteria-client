@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const ItemCard = ({ item }) => {
    const { _id, image, item_name, price, subcategory_Name } = item;
    return (
-      <div className="py-2">
+      <div className="py-2 lg:py-4 flex flex-col">
          <div>
             <img src={image} alt={item_name} className="w-full object-cover" />
          </div>
-         <div className="mt-3 text-center">
-            <h3 className="text-brownPrimary text-[19px] font-medium tracking-[3.1px] uppercase mb-1">
+         <div className="mt-3 text-center flex-grow flex flex-col">
+            <h3 className="text-brownPrimary text-[19px] font-medium tracking-[3.1px] uppercase mb-1 flex-grow">
                {item_name}
             </h3>
             <p className=" text-[#58595B] capitalize">{subcategory_Name}</p>

@@ -32,9 +32,9 @@ const Home = () => {
          <Banner></Banner>
 
          {/* Items Section */}
-         <section>
+         <section className="mx-auto max-w-[1170px] md:w-[82%] w-[90%] py-[70px] md:py-[90px] lg:py-[100px]">
             {/* section title */}
-            <div className="text-center space-y-3">
+            <div className="text-center space-y-3 mb-7">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
                   bestselling
                </h2>
