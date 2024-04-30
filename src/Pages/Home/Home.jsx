@@ -3,6 +3,7 @@ import ItemsSection from "../../Components/ItemsSection/ItemsSection";
 import SubCategorySection from "../../Components/SubCategorySection/SubCategorySection";
 import Banner from "../../Components/Banner/Banner";
 import TestimonialsSection from "../../Components/TestimonialsSection/TestimonialsSection";
+import WhyUs from "../../Components/WhyUs/WhyUs";
 
 const Home = () => {
    const [text] = useTypewriter({
@@ -79,6 +80,23 @@ const Home = () => {
                </p>
             </div>
             <TestimonialsSection></TestimonialsSection>
+         </section>
+
+         {/* Why Us Section */}
+         <section>
+            {/* section title */}
+            <div className="text-center space-y-3">
+               <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
+                  our <span>{client}</span>{" "}
+                  <span>
+                     <Cursor cursorStyle=""></Cursor>
+                  </span>{" "}
+               </h2>
+               <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
+                  testimonials
+               </p>
+            </div>
+            <WhyUs></WhyUs>
          </section>
       </div>
    );
