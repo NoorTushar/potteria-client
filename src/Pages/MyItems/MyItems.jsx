@@ -4,12 +4,17 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import MyItemCard from "../../Components/MyItemCard/MyItemCard";
 import { Triangle } from "react-loader-spinner";
-import Lottie from "lottie-react";
 import PageTopWaveAnimation from "../../../public/PageTopWaveAnimation.json";
 
 export const ItemProvider = createContext(null);
 
+// lottie files
+
+import NewYearLights from "../../assets/animation-new-year.json";
+import Lottie from "lottie-react";
+
 const MyItems = () => {
+   const { theme } = useContext(AuthContext);
    const [loadedItems, setLoadedItems] = useState([]);
    const [filteredItems, setFilteredItems] = useState([]);
    const [toggle, setToggle] = useState(true);
@@ -86,21 +91,29 @@ const MyItems = () => {
    return (
       <ItemProvider.Provider value={itemContextValues}>
          <div className="max-w-[1170px] mx-auto w-[90%] md:w-[82%]">
-            <div style={{ height: "150px" }} className="">
-               <Lottie
-                  loop={true}
-                  animationData={PageTopWaveAnimation}
-                  style={{ width: "100%" }}
-               />
+            <div className="relative w-full overflow-hidden ">
+               <h1
+                  className={`text-3xl font-bold text-center tracking-[4px] ${
+                     theme === "luxury"
+                        ? "text-yellow-600"
+                        : "text-brownPrimary"
+                  } py-[60px] lg:py-[100px]`}
+               >
+                  MY ITEMS
+               </h1>
+               <div className="w-full absolute top-0 -z-40">
+                  <Lottie loop={true} animationData={NewYearLights}></Lottie>
+               </div>
             </div>
-            <h3 className="uppercase">Items of {emailId}. Total items:</h3>
 
             {/* Filter option for customization */}
-            <div>
+            <div className="mb-6">
                <h3 className="text-2xl">Filter: </h3>
                <form>
                   <div className="">
-                     <label htmlFor="customization">Customization</label>
+                     <label htmlFor="customization" className="mr-2">
+                        Customization
+                     </label>
                      <select
                         onChange={(e) => handleFilterCustomization(e)}
                         name="customization"
@@ -116,7 +129,7 @@ const MyItems = () => {
             </div>
 
             {/* item gallery */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 mb-[60px]">
                {filteredItems.map((item) => {
                   return <MyItemCard item={item} key={item._id}></MyItemCard>;
                })}
