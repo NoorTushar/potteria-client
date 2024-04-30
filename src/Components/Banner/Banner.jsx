@@ -7,8 +7,12 @@ import "swiper/css/bundle";
 import { Pagination, Navigation, Autoplay, EffectFade } from "swiper/modules";
 
 import "./Banner.css";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
+   const { theme } = useContext(AuthContext);
    const [text] = useTypewriter({
       words: ["Ceramics", "Pottery"],
       loop: true,
@@ -56,7 +60,15 @@ const Banner = () => {
                            Welcome to a world where creativity takes shape,
                            where clay transforms into timeless artistry.
                         </p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <Link
+                           to={"/items"}
+                           className={`btn  ${
+                              theme !== "luxury" &&
+                              "bg-yellow-600  border-yellow-600"
+                           }`}
+                        >
+                           All Items
+                        </Link>
                      </div>
                   </div>
                </div>
@@ -84,7 +96,15 @@ const Banner = () => {
                            Welcome to a world where creativity takes shape,
                            where clay transforms into timeless artistry.
                         </p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <Link
+                           to={"/items"}
+                           className={`btn ${
+                              theme !== "luxury" &&
+                              "bg-yellow-600 border-yellow-600"
+                           }`}
+                        >
+                           All Items
+                        </Link>
                      </div>
                   </div>
                </div>
@@ -111,7 +131,15 @@ const Banner = () => {
                            Welcome to a world where creativity takes shape,
                            where clay transforms into timeless artistry.
                         </p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <Link
+                           to={"/items"}
+                           className={`btn  ${
+                              theme !== "luxury" &&
+                              "bg-yellow-600 border-yellow-600"
+                           }`}
+                        >
+                           All Items
+                        </Link>
                      </div>
                   </div>
                </div>
