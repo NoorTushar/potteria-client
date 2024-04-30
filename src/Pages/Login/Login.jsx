@@ -15,7 +15,8 @@ const Login = () => {
    const [showPassword, setShowPassword] = useState(false);
 
    // importing values from AutHContext provider
-   const { theme, loginUser, loginWithGoogle } = useContext(AuthContext);
+   const { theme, loginUser, loginWithGoogle, loginWithGitHub } =
+      useContext(AuthContext);
 
    // after login correct redirection (3)
    // first we will get the location of the current page
@@ -81,6 +82,39 @@ const Login = () => {
          });
    };
 
+   // handle login with github firebase
+   const handleLoginWithGitHub = () => {
+      loginWithGitHub()
+         .then((data) => {
+            console.log(data.user);
+
+            Swal.fire({
+               title: "Success!",
+               text: "Logged in successfully!",
+               icon: "success",
+
+               confirmButtonText: "Ok",
+            });
+
+            // after login correct redirection (5)
+            navigate(location?.state || "/");
+         })
+         .catch((error) => {
+            console.log(error);
+            const errorMessage = error.message;
+
+            Swal.fire({
+               title: "Failure!",
+               text: `${errorMessage}`,
+               icon: "error",
+               width: 600,
+               color: "tomato",
+               background: "",
+               confirmButtonText: "Ok",
+            });
+         });
+   };
+
    // login with google using firebase
    const handleLoginWithGoogle = () => {
       loginWithGoogle()
@@ -94,6 +128,9 @@ const Login = () => {
 
                confirmButtonText: "Ok",
             });
+
+            // after login correct redirection (5)
+            navigate(location?.state || "/");
          })
          .catch((error) => {
             console.log(error);
@@ -238,6 +275,7 @@ const Login = () => {
                </button>
                {/* gitHub sign in */}
                <button
+                  onClick={handleLoginWithGitHub}
                   aria-label="Log in with GitHub"
                   className="p-3 rounded-sm"
                >
@@ -256,7 +294,7 @@ const Login = () => {
                <Link
                   state={locationState}
                   to={"/register"}
-                  className="underline text-gray-100 "
+                  className="underline "
                >
                   Sign up
                </Link>

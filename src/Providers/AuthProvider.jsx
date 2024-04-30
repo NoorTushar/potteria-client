@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
+   GithubAuthProvider,
    GoogleAuthProvider,
    createUserWithEmailAndPassword,
    onAuthStateChanged,
@@ -13,6 +14,7 @@ import { auth } from "../Firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
+const gitHubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
    // use theme from local storage if available or set light theme
@@ -53,6 +55,11 @@ const AuthProvider = ({ children }) => {
       return signInWithPopup(auth, googleProvider);
    };
 
+   const loginWithGitHub = () => {
+      setLoading(true);
+      return signInWithPopup(auth, gitHubProvider);
+   };
+
    // logout
    const logoutUser = () => {
       return signOut(auth);
@@ -82,6 +89,7 @@ const AuthProvider = ({ children }) => {
       logoutUser,
       user,
       setLoading,
+      loginWithGitHub,
    };
    return (
       <AuthContext.Provider value={allValues}>{children}</AuthContext.Provider>
