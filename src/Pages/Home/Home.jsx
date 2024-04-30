@@ -8,7 +8,6 @@ import CounterSection from "../../Components/CounterSection/CounterSection";
 
 // lottie files
 
-import BackGroundWave from "../../assets/background-wave.json";
 import NewYearLights from "../../assets/animation-new-year.json";
 import Lottie from "lottie-react";
 

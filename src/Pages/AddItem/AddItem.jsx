@@ -5,6 +5,11 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
+// lottie files
+
+import NewYearLights from "../../assets/animation-new-year.json";
+import Lottie from "lottie-react";
+
 const AddItem = () => {
    const { theme, user } = useContext(AuthContext);
 
@@ -44,46 +49,25 @@ const AddItem = () => {
          .catch((error) => {
             console.log(error);
          });
-
-      // const image = getValues("image");
-      // const item_name = getValues("item_name");
-      // const subcategory_Name = getValues("subcategory_Name");
-      // const short_description = getValues("short_description");
-      // const price = parseFloat(getValues("price"));
-      // const rating = parseFloat(getValues("rating"));
-      // const customization = getValues("customization");
-      // const processing_time = getValues("processing_time");
-      // const stock_status = getValues("stock_status");
-      // const user_name = getValues("user_name");
-      // const user_email = getValues("user_email");
-
-      // const item = {
-      //    image,
-      //    item_name,
-      //    subcategory_Name,
-      //    short_description,
-      //    price,
-      //    rating,
-      //    customization,
-      //    processing_time,
-      //    stock_status,
-      //    user_name,
-      //    user_email,
-      // };
    };
 
    return (
-      <div className="min-h-[calc(100vh-100px)] max-w-[1170px] mx-auto w-[90%] md:w-[82%] flex flex-col items-center justify-center">
-         <div className="w-full mx-auto md:max-w-[90%] p-8  ">
+      <div className="min-h-[calc(100vh-100px)] max-w-[1170px] mx-auto w-[90%] md:w-[82%] ">
+         <div className="relative w-full overflow-hidden ">
             <h1
                className={`text-3xl font-bold text-center tracking-[4px] ${
-                  theme === "luxury" ? "text-blue-500" : "text-red-500"
-               }`}
+                  theme === "luxury" ? "text-yellow-600" : "text-brownPrimary"
+               } py-[60px] lg:py-[100px]`}
             >
                ADD ITEM
             </h1>
+            <div className="w-full absolute top-0 -z-40">
+               <Lottie loop={true} animationData={NewYearLights}></Lottie>
+            </div>
+         </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="my-[60px]">
+         <div className="w-full mx-auto md:max-w-[90%] px-8  ">
+            <form onSubmit={handleSubmit(onSubmit)} className="mb-[60px]">
                <div className="grid md:grid-cols-2 gap-6">
                   {/* image Field */}
                   <div>
@@ -393,7 +377,7 @@ const AddItem = () => {
                   )}
                </div>
 
-               <div className="text-center mt-6">
+               <div className="text-center mt-10">
                   <button className="  relative inline-flex items-center justify-start px-5 py-2 overflow-hidden font-medium transition-all bg-white  hover:bg-white group border-2 border-[#a65f3f] text-[14px] tracking-[1.2px]">
                      <span className="w-48 h-48 rounded rotate-[-40deg] bg-[#a65f3f]  absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
                      <span className="relative w-full text-[#a65f3f] transition-colors duration-300 ease-in-out group-hover:text-white text-center">
