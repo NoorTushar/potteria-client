@@ -38,8 +38,6 @@ const SubCategorySection = () => {
 
    return (
       <div>
-         <h3>Items: {allItems.length}</h3>
-
          <div className="grid md:grid-cols-2 lg:grid-cols-3">
             {allItems.slice(0, 6).map((item) => {
                return (

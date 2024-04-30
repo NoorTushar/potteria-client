@@ -26,6 +26,13 @@ const Home = () => {
       typeSpeed: 120,
       deleteSpeed: 80,
    });
+
+   const [features] = useTypewriter({
+      words: ["Features"],
+      loop: true,
+      typeSpeed: 120,
+      deleteSpeed: 80,
+   });
    return (
       <div>
          {/* banner */}
@@ -34,7 +41,7 @@ const Home = () => {
          {/* Items Section */}
          <section className="mx-auto max-w-[1170px] md:w-[82%] w-[90%] py-[70px] md:py-[90px] lg:py-[100px]">
             {/* section title */}
-            <div className="text-center space-y-3 mb-7">
+            <div className="text-center space-y-3 mb-[50px] md:mb-[70px] lg:mb-[80px]">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
                   bestselling
                </h2>
@@ -55,9 +62,9 @@ const Home = () => {
          </section>
 
          {/* SubCategories Section */}
-         <section>
+         <section className="py-[50px] md:py-[70px] lg:py-[80px]">
             {/* section title */}
-            <div className="text-center space-y-3">
+            <div className="text-center space-y-3 mb-[50px] md:mb-[70px] lg:mb-[80px]">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
                   categories
                </h2>
@@ -72,9 +79,9 @@ const Home = () => {
          </section>
 
          {/* Testimonials Section */}
-         <section>
+         <section className="">
             {/* section title */}
-            <div className="text-center space-y-3">
+            <div className="text-center space-y-3 mb-[50px] md:mb-[70px] lg:mb-[80px]">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
                   testimonials
                </h2>
@@ -89,17 +96,17 @@ const Home = () => {
          </section>
 
          {/* Why Us Section */}
-         <section>
+         <section className="py-[70px] md:py-[90px] lg:py-[100px]">
             {/* section title */}
-            <div className="text-center space-y-3">
+            <div className="text-center space-y-3 mb-[50px] md:mb-[70px] lg:mb-[80px]">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
-                  our <span>{client}</span>{" "}
+                  why us
+               </h2>
+               <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
+                  our strong <span>{features}</span>{" "}
                   <span>
                      <Cursor cursorStyle=""></Cursor>
                   </span>{" "}
-               </h2>
-               <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
-                  testimonials
                </p>
             </div>
             <WhyUs></WhyUs>
