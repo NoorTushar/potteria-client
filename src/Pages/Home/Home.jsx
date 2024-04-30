@@ -4,6 +4,7 @@ import SubCategorySection from "../../Components/SubCategorySection/SubCategoryS
 import Banner from "../../Components/Banner/Banner";
 import TestimonialsSection from "../../Components/TestimonialsSection/TestimonialsSection";
 import WhyUs from "../../Components/WhyUs/WhyUs";
+import CounterSection from "../../Components/CounterSection/CounterSection";
 
 const Home = () => {
    const [text] = useTypewriter({
@@ -35,17 +36,22 @@ const Home = () => {
             {/* section title */}
             <div className="text-center space-y-3">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
+                  bestselling
+               </h2>
+               <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
                   most <span>{text}</span>{" "}
                   <span>
                      <Cursor cursorStyle=""></Cursor>
                   </span>{" "}
                   products
-               </h2>
-               <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
-                  bestselling
                </p>
             </div>
             <ItemsSection></ItemsSection>
+         </section>
+
+         {/* Items Section */}
+         <section>
+            <CounterSection></CounterSection>
          </section>
 
          {/* SubCategories Section */}
@@ -53,13 +59,13 @@ const Home = () => {
             {/* section title */}
             <div className="text-center space-y-3">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
-                  browse by <span>{subcategory}</span>{" "}
+                  categories
+               </h2>
+               <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
+                  browse by sub<span>{subcategory}</span>{" "}
                   <span>
                      <Cursor cursorStyle=""></Cursor>
                   </span>{" "}
-               </h2>
-               <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
-                  subcategory
                </p>
             </div>
             <SubCategorySection></SubCategorySection>
@@ -70,13 +76,13 @@ const Home = () => {
             {/* section title */}
             <div className="text-center space-y-3">
                <h2 className="text-[35px] font-medium tracking-[5.7px] uppercase leading-[43.05px] text-brownPrimary">
-                  our <span>{client}</span>{" "}
+                  testimonials
+               </h2>
+               <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
+                  what our <span>{client}</span> say
                   <span>
                      <Cursor cursorStyle=""></Cursor>
                   </span>{" "}
-               </h2>
-               <p className="capitalize italic font-light tracking-[0.5px] text-[17px] text-brownPrimary">
-                  testimonials
                </p>
             </div>
             <TestimonialsSection></TestimonialsSection>
