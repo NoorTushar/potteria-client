@@ -1,8 +1,21 @@
-# React + Vite
+# Website: Echelon
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live link: https://echelon-tushar.web.app/
 
-Currently, two official plugins are available:
+## Features and Characteristics:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-  Explore the unique Art and Craft Collection of Ceramics and Pottery
+-  Elegant website design.
+-  Dark mode option.
+-  Registration and Login can be done through Google and GitHub account.
+-  You can update your username and photo URL anytime you want.
+-  A user can add, update or delete their item. Can see all their added items is a single page named "My items".
+-  Best selling section to make easy decision for your first purchase or next purchase.
+-  Counter Section where you can see notable stats.
+-  Categories section through which you can browse items according to quantity.
+-  Get view all items at once in a table view.
+-  Only after login, you can see the details of each art and craft item.
+-  Testimonial section with classic carousel.
+-  Why us Section for why you would want to consider the service.
+-  Fully responsive website for mobile, tablet and desktop.
+-  Contact information in the footer section.
