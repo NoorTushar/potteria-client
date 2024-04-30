@@ -1,6 +1,6 @@
 # Website: Echelon
 
-Live link: https://echelon-tushar.web.app/
+Live link: https://potteria-auth.web.app/
 
 ## Features and Characteristics:
 
